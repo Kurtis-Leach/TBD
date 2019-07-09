@@ -1,0 +1,59 @@
+body {
+    background-image: url('http://livelyhope.co/img/63dfa4e72e2ad9a881418e74107814fa.jpg');
+    height: 100%;
+    
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+#main{
+    text-align: center;
+    
+}
+#title{
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: bolder;
+    font-size: 5em
+}
+.cards{
+    position: absolute;
+    bottom: 10px;
+    left: 40%;
+}
+.main-deck{
+    position: fixed;
+    left: 20px;
+}
+.game-btns{
+    
+    position: fixed;
+    right: 5em;
+    bottom: 5em;
+}
+.start{
+    position: absolute;
+    right: 5em;
+    top: 2em
+}
+.stop{
+    position: absolute;
+    right: 5em;
+    top: 6em
+
+}
+.total{
+    position: absolute;
+    left: 15em;
+    bottom: 4em;
+}
+.total-display{
+    background-color: black;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: bold;
+    color: rgb(228, 209, 209);
+    padding: .5em;
+}
+.dice{
+    position: absolute;
+    left: 5em;
+    top: 5em;
+}
