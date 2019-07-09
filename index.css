@@ -1,4 +1,4 @@
-body {
+html, body {
     background-image: url('http://livelyhope.co/img/63dfa4e72e2ad9a881418e74107814fa.jpg');
     height: 100%;
     
@@ -24,7 +24,6 @@ body {
     left: 20px;
 }
 .game-btns{
-    
     position: fixed;
     right: 5em;
     bottom: 5em;
