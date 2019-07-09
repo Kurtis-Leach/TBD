@@ -1,8 +1,13 @@
-body{
-    background-color: rgb(99, 153, 46);
+body {
+    background-image: url('http://livelyhope.co/img/63dfa4e72e2ad9a881418e74107814fa.jpg');
+    height: 100%;
+    
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 #main{
     text-align: center;
+    
 }
 #title{
     font-family: 'Times New Roman', Times, serif;
@@ -46,4 +51,9 @@ body{
     font-weight: bold;
     color: rgb(228, 209, 209);
     padding: .5em;
+}
+.dice{
+    position: absolute;
+    left: 5em;
+    top: 5em;
 }
