@@ -1,6 +1,7 @@
-body {
+html, body {
     background-image: url('http://livelyhope.co/img/63dfa4e72e2ad9a881418e74107814fa.jpg');
     height: 100%;
+    margin: 0;
     
     background-repeat: no-repeat;
     background-size: cover;
@@ -44,6 +45,10 @@ body {
     position: absolute;
     left: 15em;
     bottom: 4em;
+}
+#total-title{
+    font-weight: bold;
+    color: white;
 }
 .total-display{
     background-color: black;
