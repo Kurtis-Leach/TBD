@@ -1,6 +1,8 @@
 class Hand {
 
-    constructor(id){
+    constructor(id, cardDiv){
+        this.cardDiv = cardDiv
+        this.cardDiv[0].innerHTML = ''
         this.cards = []
         this.total = 0
         this.deck_id = id
@@ -9,24 +11,26 @@ class Hand {
 
 
     drawTwo(){
-        fetch(`https://deckofcardsapi.com/api/deck/${this.deck_id}/draw/?count=2`).then((res)=>{
-        return res.json()
+        fetch(`https://deckofcardsapi.com/api/deck/${this.deck_id}/draw/?count=2`).then((resp)=>{
+        return resp.json()
         }).then((res)=>{
-            console.log(res.cards)
+            // console.log(res.cards)
             for(let i in res.cards){
                 this.cardAdder(res.cards[i])
+                this.cardImgToScreen(res.cards[i])
             }
 
         })
     }
 
     hit(){
-        fetch(`https://deckofcardsapi.com/api/deck/${this.deck_id}/draw/?count=1`).then((res)=>{
-        return res.json()
+        fetch(`https://deckofcardsapi.com/api/deck/${this.deck_id}/draw/?count=1`).then((resp)=>{
+        return resp.json()
         }).then((res)=>{
             console.log(res.cards)
             for(let i in res.cards){
                 this.cardAdder(res.cards[i])
+                this.cardImgToScreen(res.cards[i])
             }
 
         })
@@ -41,6 +45,13 @@ class Hand {
             }else {
                 this.totalIncrease(Number(card.value))
             }
+    }
+
+    cardImgToScreen(card){
+        let cardImg = document.createElement('img')
+        cardImg.src = card.image
+        cardImg.className = 'card-imgs'
+        this.cardDiv[0].appendChild(cardImg)
     }
 
 
@@ -62,18 +73,21 @@ class Hand {
             this.bust()
         }else if(this.total == 21){
             alert(`You Win!! You had ${this.total}`)
+            this.cardDiv[0].innerHTML = ''
             UserHand.currentHand = []
         }
     }
 
     bust(){
         alert(`You Lost!! Your total was ${this.total}`)
+        this.cardDiv[0].innerHTML = ''
         UserHand.currentHand = []
     }
 
     stay(){
         if (this.total <= 21){
             alert(`You Win!! You had ${this.total}`)
+            this.cardDiv[0].innerHTML = ''
         }
     }
 }

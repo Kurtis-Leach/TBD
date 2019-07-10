@@ -20,6 +20,10 @@ html, body {
     bottom: 10px;
     left: 40%;
 }
+.card-imgs{
+    height: 150px; 
+    width: 100px;
+}
 .main-deck{
     position: fixed;
     left: 20px;

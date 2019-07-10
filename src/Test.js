@@ -5,8 +5,8 @@ const newDeck = 'https://deckofcardsapi.com/api/deck/new/shuffle/?deck_count=1'
 
 
 document.addEventListener('DOMContentLoaded', ()=>{
+    
     let startBtn = document.getElementById('start')
-    // let gameBtnDiv = document.getElementsByClassName('game-btns')
     let hitBtn = document.getElementById('hit')
     let stayBtn = document.getElementById('stay')
     let total = document.getElementById('total')
@@ -17,11 +17,9 @@ document.addEventListener('DOMContentLoaded', ()=>{
     startBtn.addEventListener('click', ()=>{
         hitBtn.style.display = 'inline'
         stayBtn.style.display = 'inline'
-        // total.style.display = 'inline'
         getDeck(newDeck).then((deck)=> {
             UserHand.currentHand = []
-           new UserHand(deck.deck_id)
-            
+           let user = new UserHand(deck.deck_id)
         })
 
     })
@@ -35,6 +33,7 @@ document.addEventListener('DOMContentLoaded', ()=>{
         hitBtn.style.display = 'none'
         stayBtn.style.display = 'none'
     })
+
 
 
     
