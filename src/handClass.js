@@ -1,25 +1,25 @@
 class Hand {
 
-    constructor(id, cardDiv){
+    constructor(id, cardDiv, totalDiv){
         this.cardDiv = cardDiv
-        this.cardDiv[0].innerHTML = ''
+        this.totalDiv = totalDiv
+        this.cardDiv.innerHTML = ''
         this.cards = []
         this.total = 0
         this.deck_id = id
         this.drawTwo(id)
+
     }
 
 
-    drawTwo(){
+     drawTwo(){
         fetch(`https://deckofcardsapi.com/api/deck/${this.deck_id}/draw/?count=2`).then((resp)=>{
         return resp.json()
         }).then((res)=>{
-            // console.log(res.cards)
             for(let i in res.cards){
                 this.cardAdder(res.cards[i])
                 this.cardImgToScreen(res.cards[i])
             }
-
         })
     }
 
@@ -27,10 +27,9 @@ class Hand {
         fetch(`https://deckofcardsapi.com/api/deck/${this.deck_id}/draw/?count=1`).then((resp)=>{
         return resp.json()
         }).then((res)=>{
-            console.log(res.cards)
             for(let i in res.cards){
-                this.cardAdder(res.cards[i])
                 this.cardImgToScreen(res.cards[i])
+                this.cardAdder(res.cards[i])
             }
 
         })
@@ -51,7 +50,8 @@ class Hand {
         let cardImg = document.createElement('img')
         cardImg.src = card.image
         cardImg.className = 'card-imgs'
-        this.cardDiv[0].appendChild(cardImg)
+        this.cardDiv.appendChild(cardImg)
+        
     }
 
 
@@ -63,9 +63,9 @@ class Hand {
             }else {this.total = test}
         }else{ this.total += num}
         this.bustCheck()
-        let total = document.getElementById('total')
-        total.innerText = 'Total:  ' + this.total
-        total.style.display = 'inline'
+        this.totalDiv.innerText = 'Total:  ' + this.total
+        this.totalDiv.style.display = 'inline'
+        
     }
     
     bustCheck(){
@@ -73,21 +73,21 @@ class Hand {
             this.bust()
         }else if(this.total == 21){
             alert(`You Win!! You had ${this.total}`)
-            this.cardDiv[0].innerHTML = ''
-            UserHand.currentHand = []
+            //this.cardDiv.innerHTML = ''
+            
         }
     }
 
     bust(){
         alert(`You Lost!! Your total was ${this.total}`)
-        this.cardDiv[0].innerHTML = ''
-        UserHand.currentHand = []
+        //this.cardDiv.innerHTML = ''
+        
     }
 
     stay(){
         if (this.total <= 21){
             alert(`You Win!! You had ${this.total}`)
-            this.cardDiv[0].innerHTML = ''
+            this.cardDiv.innerHTML = ''
         }
     }
 }

@@ -10,6 +10,11 @@ html, body {
     text-align: center;
     
 }
+.dealers-cards{
+    position: absolute;
+    top: 10em;
+    left: 40%;
+}
 #title{
     font-family: 'Times New Roman', Times, serif;
     font-weight: bolder;
@@ -25,7 +30,8 @@ html, body {
     width: 100px;
 }
 .main-deck{
-    position: fixed;
+    position: absolute;
+    top: 15em;
     left: 20px;
 }
 .game-btns{
@@ -44,9 +50,14 @@ html, body {
     top: 6em
 
 }
+.dealer-total{
+    position: absolute;
+    left: 5em;
+    top: 7em;
+}
 .total{
     position: absolute;
-    left: 15em;
+    left: 5em;
     bottom: 4em;
 }
 #total-title{
@@ -62,6 +73,6 @@ html, body {
 }
 .dice{
     position: absolute;
-    left: 5em;
-    top: 5em;
+    right: 5em;
+    bottom: 20em;
 }

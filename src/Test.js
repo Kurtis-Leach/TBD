@@ -1,7 +1,7 @@
-// new Deck()
+
 
 const newDeck = 'https://deckofcardsapi.com/api/deck/new/shuffle/?deck_count=1'
-// let getCard = `https://deckofcardsapi.com/api/deck/${fetchDeck(newDeck)}/draw/?count=`
+
 
 
 document.addEventListener('DOMContentLoaded', ()=>{
@@ -10,26 +10,33 @@ document.addEventListener('DOMContentLoaded', ()=>{
     let hitBtn = document.getElementById('hit')
     let stayBtn = document.getElementById('stay')
     let total = document.getElementById('total')
+    let dealerTotal = document.getElementById('dealer-total')
+
+    let user; //grabs instance of UserHand
+    let dealer;
+    
     hitBtn.style.display = 'none'
     stayBtn.style.display = 'none'
     total.style.display = 'none'
+    dealerTotal.style.display = 'none'
+   
 
     startBtn.addEventListener('click', ()=>{
         hitBtn.style.display = 'inline'
         stayBtn.style.display = 'inline'
         getDeck(newDeck).then((deck)=> {
-            UserHand.currentHand = []
-           let user = new UserHand(deck.deck_id)
+            user = new UserHand(deck.deck_id)
+            dealer = new DealerHand(deck.deck_id)
         })
 
     })
 
     hitBtn.addEventListener('click', ()=>{
-        UserHand.currentHand[0].hit()
+        user.hit()
     })
 
     stayBtn.addEventListener('click', ()=>{
-        UserHand.currentHand[0].stay()
+        user.stay()
         hitBtn.style.display = 'none'
         stayBtn.style.display = 'none'
     })
