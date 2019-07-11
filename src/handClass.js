@@ -1,5 +1,7 @@
 class Hand {
 
+    static all = []
+
     constructor(id, cardDiv, totalDiv){
         this.cardDiv = cardDiv
         this.totalDiv = totalDiv
@@ -7,7 +9,7 @@ class Hand {
         this.cards = []
         this.total = 0
         this.deck_id = id
-        this.drawTwo(id)
+        Hand.all.push(this)
 
     }
 
@@ -24,7 +26,7 @@ class Hand {
     }
 
     hit(){
-        fetch(`https://deckofcardsapi.com/api/deck/${this.deck_id}/draw/?count=1`).then((resp)=>{
+        let fet =fetch(`https://deckofcardsapi.com/api/deck/${this.deck_id}/draw/?count=1`).then((resp)=>{
         return resp.json()
         }).then((res)=>{
             for(let i in res.cards){
@@ -33,6 +35,7 @@ class Hand {
             }
 
         })
+        return fet
     }
 
     cardAdder(card){
@@ -63,19 +66,39 @@ class Hand {
             }else {this.total = test}
         }else{ this.total += num}
         this.bustCheck()
+        // this.winCheck()
         this.totalDiv.innerText = 'Total:  ' + this.total
         this.totalDiv.style.display = 'inline'
         
     }
-    
+
     bustCheck(){
-        if(this.total > 21){
-            this.bust()
-        }else if(this.total == 21){
+        if (this.dealer instanceof DealerHand){
+            if (this.total >= 21){
+                this.stay()
+            }
+        }
+    }
+    
+    winCheck(){
+        if(this.total > 21 && this.dealer.total < 21){
+            alert(`You Lose!! You had ${this.total}. You Busted`)
+        }else if(this.total < 21 && this.dealer.total > 21){
+            alert(`You Win!! You had ${this.total}. Dealer Busted`)
+        }else if(this.total > 21 && this.dealer.total > 21){
+            alert(`Tie!! You and the Dealer Busted`)
+        }else if(this.total > this.dealer.total){
             alert(`You Win!! You had ${this.total}`)
+        }else if(this.total < this.dealer.total){
+            alert(`You Lose!! You had ${this.total}`)
+        }
+        // if(this.total > 21){
+        //     this.bust()
+        // }else if(this.total == 21){
+        //     alert(`You Win!! You had ${this.total}`)
             //this.cardDiv.innerHTML = ''
             
-        }
+        // }
     }
 
     bust(){
@@ -85,9 +108,13 @@ class Hand {
     }
 
     stay(){
-        if (this.total <= 21){
-            alert(`You Win!! You had ${this.total}`)
-            this.cardDiv.innerHTML = ''
-        }
+        this.dealer.play(this)//.then(()=>{
+        //     this.winCheck()
+        // })
+        // this.bustCheck()
+        // if (this.total <= 21){
+            // alert(`You Win!! You had ${this.total}`)
+            // this.cardDiv.innerHTML = ''
+        // }
     }
 }
