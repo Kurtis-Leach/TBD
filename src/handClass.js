@@ -9,7 +9,6 @@ class Hand {
         this.cards = []
         this.total = 0
         this.deck_id = id
-        this.drawTwo(id)
         this.winAlert = document.querySelector('#winner')
         //this.winner = document.querySelector('.win-banner')
 
