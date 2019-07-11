@@ -13,17 +13,17 @@ html, body {
 .dealers-cards{
     position: absolute;
     top: 10em;
-    left: 40%;
+    left: 45%;
 }
 #title{
     font-family: 'Times New Roman', Times, serif;
     font-weight: bolder;
-    font-size: 5em
+    font-size: 8em
 }
 .cards{
     position: absolute;
     bottom: 10px;
-    left: 40%;
+    left: 45%;
 }
 .card-imgs{
     height: 150px; 
@@ -31,7 +31,7 @@ html, body {
 }
 .main-deck{
     position: absolute;
-    top: 15em;
+    top: 25em;
     left: 20px;
 }
 .game-btns{
@@ -74,5 +74,24 @@ html, body {
 .dice{
     position: absolute;
     right: 5em;
-    bottom: 20em;
+    bottom: 23em;
+}
+.win-banner{
+    position: absolute;
+    top:30%;
+    left:15%;
+}
+#winner{
+    font-family: cursive;
+    font-weight: 900;
+    font-size: 5em;
+    color: rgb(187, 3, 3);
+}
+.pregame{
+    position: absolute;
+    top:40%;
+    right: 35%;
+}
+.dealer-title{
+    font-size: 2.5em;
 }
