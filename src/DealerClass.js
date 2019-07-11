@@ -20,7 +20,10 @@ class DealerHand extends Hand{
                     
                 }
             })
-        } 
+        } else {
+            user.winCheck()
+            
+        }
     }
 
 }

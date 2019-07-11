@@ -41,7 +41,7 @@ document.addEventListener('DOMContentLoaded', ()=>{
         stayBtn.style.display = 'inline'
         getDeck(newDeck).then((deck)=> {
             dealer = new DealerHand(deck.deck_id)
-            user = new UserHand(deck.deck_id, dealer)
+            user = new UserHand(deck.deck_id, dealer, stayBtn)
         })
 
     })

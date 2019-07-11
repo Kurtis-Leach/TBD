@@ -32,6 +32,7 @@ class Hand {
         return resp.json()
         }).then((res)=>{
             for(let i in res.cards){
+                // debugger
                 this.cardImgToScreen(res.cards[i])
                 this.cardAdder(res.cards[i])
             }
@@ -67,7 +68,9 @@ class Hand {
                 this.total += 1
             }else {this.total = test}
         }else{ this.total += num}
-        this.bustCheck()
+        if (this instanceof UserHand){
+            this.bustCheck()
+        }
         // this.winCheck()
         this.totalDiv.innerText = 'Total:  ' + this.total
         this.totalDiv.style.display = 'inline'
@@ -75,25 +78,26 @@ class Hand {
     }
 
     bustCheck(){
-        if (this.dealer instanceof DealerHand){
+        
             if (this.total >= 21){
                 this.stay()
             }
-        }
+        
     }
     
     winCheck(){
-        if(this.total > 21 && this.dealer.total < 21){
-            alert(`You Lose!! You had ${this.total}. You Busted`)
-        }else if(this.total < 21 && this.dealer.total > 21){
+        if(this.total > 21 && this.dealer.total <= 21){///////////MEEEEEE BUUUSSTTT
+            alert(`You Lose!! You had ${this.total}. You Busted`)////////////////
+        }else if(this.total <= 21 && this.dealer.total > 21){
             alert(`You Win!! You had ${this.total}. Dealer Busted`)
         }else if(this.total > 21 && this.dealer.total > 21){
             alert(`Tie!! You and the Dealer Busted`)
         }else if(this.total > this.dealer.total){
             alert(`You Win!! You had ${this.total}`)
-
-        }else if(this.total < this.dealer.total){
+        }else if(this.total < this.dealer.total){ 
             alert(`You Lose!! You had ${this.total}`)
+        }else if(this.total == this.dealer.total){//////////////
+            alert(`Tie!! You had ${this.total}`)
         }
 
     }
@@ -113,7 +117,7 @@ class Hand {
             //this.cardDiv.innerHTML = ''
         //}
 
-        this.dealer.play(this)//.then(()=>{
+        this.dealer.play(this)
 
     }
 }
