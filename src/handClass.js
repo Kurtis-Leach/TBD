@@ -8,6 +8,8 @@ class Hand {
         this.total = 0
         this.deck_id = id
         this.drawTwo(id)
+        this.winAlert = document.querySelector('#winner')
+        //this.winner = document.querySelector('.win-banner')
 
     }
 
@@ -73,19 +75,24 @@ class Hand {
             this.bust()
         }else if(this.total == 21){
             alert(`You Win!! You had ${this.total}`)
+            //this.winAlert.innerHTML = "You Win! <img src='https://peskypotato.com/media/pepe/pepe-dance2.gif'>"
             //this.cardDiv.innerHTML = ''
             
         }
     }
 
     bust(){
+
         alert(`You Lost!! Your total was ${this.total}`)
+        //this.winAlert.innerHTML = "You LOSE! <img src='https://www.trzcacak.rs/file/max/13/137943_sad-pepe-png.png'>"
         //this.cardDiv.innerHTML = ''
         
     }
 
     stay(){
         if (this.total <= 21){
+           
+            //this.winAlert.innerHTML = "You Win! <img src='https://peskypotato.com/media/pepe/pepe-dance2.gif'>"
             alert(`You Win!! You had ${this.total}`)
             this.cardDiv.innerHTML = ''
         }
