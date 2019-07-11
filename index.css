@@ -1,6 +1,7 @@
 html, body {
     background-image: url('http://livelyhope.co/img/63dfa4e72e2ad9a881418e74107814fa.jpg');
     height: 100%;
+    margin: 0;
     
     background-repeat: no-repeat;
     background-size: cover;
@@ -8,6 +9,11 @@ html, body {
 #main{
     text-align: center;
     
+}
+.dealers-cards{
+    position: absolute;
+    top: 10em;
+    left: 40%;
 }
 #title{
     font-family: 'Times New Roman', Times, serif;
@@ -24,7 +30,8 @@ html, body {
     width: 100px;
 }
 .main-deck{
-    position: fixed;
+    position: absolute;
+    top: 15em;
     left: 20px;
 }
 .game-btns{
@@ -43,10 +50,19 @@ html, body {
     top: 6em
 
 }
+.dealer-total{
+    position: absolute;
+    left: 5em;
+    top: 7em;
+}
 .total{
     position: absolute;
-    left: 15em;
+    left: 5em;
     bottom: 4em;
+}
+#total-title{
+    font-weight: bold;
+    color: white;
 }
 .total-display{
     background-color: black;
@@ -57,6 +73,6 @@ html, body {
 }
 .dice{
     position: absolute;
-    left: 5em;
-    top: 5em;
+    right: 5em;
+    bottom: 20em;
 }
