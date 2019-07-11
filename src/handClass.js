@@ -1,5 +1,7 @@
 class Hand {
 
+    static all = []
+
     constructor(id, cardDiv, totalDiv){
         this.cardDiv = cardDiv
         this.totalDiv = totalDiv
@@ -10,6 +12,7 @@ class Hand {
         this.drawTwo(id)
         this.winAlert = document.querySelector('#winner')
         //this.winner = document.querySelector('.win-banner')
+
 
     }
 
@@ -26,7 +29,7 @@ class Hand {
     }
 
     hit(){
-        fetch(`https://deckofcardsapi.com/api/deck/${this.deck_id}/draw/?count=1`).then((resp)=>{
+        let fet =fetch(`https://deckofcardsapi.com/api/deck/${this.deck_id}/draw/?count=1`).then((resp)=>{
         return resp.json()
         }).then((res)=>{
             for(let i in res.cards){
@@ -35,6 +38,7 @@ class Hand {
             }
 
         })
+        return fet
     }
 
     cardAdder(card){
@@ -65,36 +69,52 @@ class Hand {
             }else {this.total = test}
         }else{ this.total += num}
         this.bustCheck()
+        // this.winCheck()
         this.totalDiv.innerText = 'Total:  ' + this.total
         this.totalDiv.style.display = 'inline'
         
     }
-    
+
     bustCheck(){
-        if(this.total > 21){
-            this.bust()
-        }else if(this.total == 21){
-            alert(`You Win!! You had ${this.total}`)
-            //this.winAlert.innerHTML = "You Win! <img src='https://peskypotato.com/media/pepe/pepe-dance2.gif'>"
-            //this.cardDiv.innerHTML = ''
-            
+        if (this.dealer instanceof DealerHand){
+            if (this.total >= 21){
+                this.stay()
+            }
         }
+    }
+    
+    winCheck(){
+        if(this.total > 21 && this.dealer.total < 21){
+            alert(`You Lose!! You had ${this.total}. You Busted`)
+        }else if(this.total < 21 && this.dealer.total > 21){
+            alert(`You Win!! You had ${this.total}. Dealer Busted`)
+        }else if(this.total > 21 && this.dealer.total > 21){
+            alert(`Tie!! You and the Dealer Busted`)
+        }else if(this.total > this.dealer.total){
+            alert(`You Win!! You had ${this.total}`)
+
+        }else if(this.total < this.dealer.total){
+            alert(`You Lose!! You had ${this.total}`)
+        }
+
     }
 
     bust(){
 
         alert(`You Lost!! Your total was ${this.total}`)
-        //this.winAlert.innerHTML = "You LOSE! <img src='https://www.trzcacak.rs/file/max/13/137943_sad-pepe-png.png'>"
-        //this.cardDiv.innerHTML = ''
         
     }
 
     stay(){
-        if (this.total <= 21){
+
+        //if (this.total <= 21){
            
             //this.winAlert.innerHTML = "You Win! <img src='https://peskypotato.com/media/pepe/pepe-dance2.gif'>"
-            alert(`You Win!! You had ${this.total}`)
-            this.cardDiv.innerHTML = ''
-        }
+            //alert(`You Win!! You had ${this.total}`)
+            //this.cardDiv.innerHTML = ''
+        //}
+
+        this.dealer.play(this)//.then(()=>{
+
     }
 }

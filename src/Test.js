@@ -40,8 +40,8 @@ document.addEventListener('DOMContentLoaded', ()=>{
         hitBtn.style.display = 'inline'
         stayBtn.style.display = 'inline'
         getDeck(newDeck).then((deck)=> {
-            user = new UserHand(deck.deck_id)
             dealer = new DealerHand(deck.deck_id)
+            user = new UserHand(deck.deck_id, dealer)
         })
 
     })

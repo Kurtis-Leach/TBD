@@ -6,7 +6,21 @@ class DealerHand extends Hand{
         let totalDiv = document.querySelector('#dealer-total')
         
         super(id, cardDiv, totalDiv)
+        this.drawTwo(id)
         
+    }
+
+    play(user){
+        if(this.total <= 17){
+            this.hit().then(()=>{
+                if(this.total <= 17){
+                    this.play()
+                }else {
+                    user.winCheck()
+                    
+                }
+            })
+        } 
     }
 
 }
