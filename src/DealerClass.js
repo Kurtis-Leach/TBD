@@ -14,10 +14,12 @@ class DealerHand extends Hand{
         if(this.total <= 17){
             this.hit().then(()=>{
                 if(this.total <= 17){
-                    this.play()
+        
+                    this.play(user)
                 }else {
+        
                     user.winCheck()
-                    
+
                 }
             })
         } else {
