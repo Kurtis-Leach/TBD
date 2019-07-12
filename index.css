@@ -1,4 +1,6 @@
 html, body {
+ 
+    
     background-image: url('http://livelyhope.co/img/63dfa4e72e2ad9a881418e74107814fa.jpg');
     height: 100%;
     margin: 0;
@@ -6,15 +8,21 @@ html, body {
     background-repeat: no-repeat;
     background-size: cover;
 }
+
+
+
 #main{
-    text-align: center;
+  
     
+    text-align: center;
 }
 .dealers-cards{
     position: absolute;
+    transition: all .25s ease-in-out;
     top: 15em;
     left: 45%;
 }
+.dealers-cards:hover { transform: scale(1.5); }
 #title{
     font-family: 'Times New Roman', Times, serif;
     color: rgb(131, 52, 52);
@@ -29,9 +37,11 @@ html, body {
 }
 .cards{
     position: absolute;
-    bottom: 10px;
+    transition: all .25s ease-in-out;
+    bottom: 40px;
     left: 45%;
 }
+.cards:hover { transform: scale(1.5); }
 .card-imgs{
     height: 150px; 
     width: 100px;
@@ -43,20 +53,26 @@ html, body {
 }
 .game-btns{
     position: fixed;
+    transition: all .25s ease-in-out;
     right: 5em;
     bottom: 5em;
 }
+.game-btns:hover { transform: scale(1.5); }
 .start{
     position: absolute;
     right: 5em;
-    top: 2em
+    top: 2em;
+    transition: all .25s ease-in-out;
 }
+.start:hover { transform: scale(1.5); }
 .quit{
     position: absolute;
     right: 5em;
-    top: 6em
+    top: 6em;
+    transition: all .25s ease-in-out;
 
 }
+.quit:hover { transform: scale(1.5); }
 .dealer-total{
     position: absolute;
     left: 5em;
