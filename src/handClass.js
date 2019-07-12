@@ -57,6 +57,7 @@ class Hand {
         cardImg.className = 'card-imgs'
         this.cardDiv.appendChild(cardImg)
         
+        
     }
 
 
