@@ -5,7 +5,6 @@ const newDeck = 'https://deckofcardsapi.com/api/deck/new/shuffle/?deck_count=1'
 
 
 document.addEventListener('DOMContentLoaded', ()=>{
-    
 
 
     let startBtn = document.getElementById('start')
@@ -14,6 +13,10 @@ document.addEventListener('DOMContentLoaded', ()=>{
     let total = document.getElementById('total')
     let dealerTotal = document.getElementById('dealer-total')
     let winAlert = document.querySelector('#winner')
+    let quitButton = document.querySelector('#quit')
+
+   
+
     
    
     
@@ -31,9 +34,18 @@ document.addEventListener('DOMContentLoaded', ()=>{
     total.style.display = 'none'
     dealerTotal.style.display = 'none'
     
+    quitButton.addEventListener('click',()=>{
+        location.reload()
+    })
    
+    // setTimeout(()=>{backgroundMusic()},1000)
 
     startBtn.addEventListener('click', ()=>{
+        backgroundMusic()
+        setInterval(()=>{backgroundMusic()},
+        1000*165
+        //TIME
+        )
         let gifs = document.querySelectorAll('.gifs')
         gifs.forEach( gif => gif.remove())
         winAlert.innerText = ''
@@ -47,6 +59,7 @@ document.addEventListener('DOMContentLoaded', ()=>{
     })
 
     hitBtn.addEventListener('click', ()=>{
+        cardPullSound()
         user.hit()
     })
 
@@ -87,3 +100,4 @@ function preGameGif(){
     let gifDiv = document.querySelector('.pregame')
     gifDiv.append(gif)
 }
+

@@ -32,7 +32,6 @@ class Hand {
         return resp.json()
         }).then((res)=>{
             for(let i in res.cards){
-                // debugger
                 this.cardImgToScreen(res.cards[i])
                 this.cardAdder(res.cards[i])
             }
@@ -53,10 +52,13 @@ class Hand {
     }
 
     cardImgToScreen(card){
-        let cardImg = document.createElement('img')
-        cardImg.src = card.image
-        cardImg.className = 'card-imgs'
-        this.cardDiv.appendChild(cardImg)
+        setTimeout(()=>{
+            let cardImg = document.createElement('img')
+            cardImg.src = card.image
+            cardImg.className = 'card-imgs'
+            this.cardDiv.appendChild(cardImg)
+            cardPullSound()
+        }, 250)
         
     }
 
@@ -69,6 +71,7 @@ class Hand {
             }else {this.total = test}
         }else{ this.total += num}
         if (this instanceof UserHand){
+            
             this.bustCheck()
         }
         // this.winCheck()
@@ -86,38 +89,45 @@ class Hand {
     }
     
     winCheck(){
-        if(this.total > 21 && this.dealer.total <= 21){///////////MEEEEEE BUUUSSTTT
-            alert(`You Lose!! You had ${this.total}. You Busted`)////////////////
+        if(this.total > 21 && this.dealer.total <= 21){
+            setTimeout(() => { this.winAlert.innerHTML = "<img src='https://media0.giphy.com/media/11HbvtUCfEi8Cs/giphy.gif'>"}, 1000)
+            //alert(`You Lose!! You had ${this.total}. You Busted`)
         }else if(this.total <= 21 && this.dealer.total > 21){
-            alert(`You Win!! You had ${this.total}. Dealer Busted`)
+            setTimeout(()=> this.winAlert.innerHTML = "You Win! <img src='https://peskypotato.com/media/pepe/pepe-dance2.gif'>", 1000)
+            //alert(`You Win!! You had ${this.total}. Dealer Busted`)
         }else if(this.total > 21 && this.dealer.total > 21){
+            
             alert(`Tie!! You and the Dealer Busted`)
         }else if(this.total > this.dealer.total){
-            alert(`You Win!! You had ${this.total}`)
-        }else if(this.total < this.dealer.total){ 
-            alert(`You Lose!! You had ${this.total}`)
-        }else if(this.total == this.dealer.total){//////////////
+             setTimeout(()=> this.winAlert.innerHTML = "You Win! <img src='https://peskypotato.com/media/pepe/pepe-dance2.gif'>", 1000)
+            //alert(`You Win!! You had ${this.total}`)
+        }else if(this.total < this.dealer.total){
+            setTimeout(() => { this.winAlert.innerHTML = "<img src='https://media0.giphy.com/media/11HbvtUCfEi8Cs/giphy.gif'>"}, 1000)
+            //alert(`You Lose!! You had ${this.total}`)
+        }else if(this.total == this.dealer.total){
+            
             alert(`Tie!! You had ${this.total}`)
         }
 
     }
 
     bust(){
-
+        
         alert(`You Lost!! Your total was ${this.total}`)
         
     }
 
     stay(){
-
-        //if (this.total <= 21){
+        
+        
            
             //this.winAlert.innerHTML = "You Win! <img src='https://peskypotato.com/media/pepe/pepe-dance2.gif'>"
-            //alert(`You Win!! You had ${this.total}`)
-            //this.cardDiv.innerHTML = ''
-        //}
+            
+            
+       
 
         this.dealer.play(this)
 
     }
 }
+
