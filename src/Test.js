@@ -14,6 +14,8 @@ document.addEventListener('DOMContentLoaded', ()=>{
     let total = document.getElementById('total')
     let dealerTotal = document.getElementById('dealer-total')
     let winAlert = document.querySelector('#winner')
+    let quitButton = document.querySelector('#quit')
+
     
    
     
@@ -31,6 +33,9 @@ document.addEventListener('DOMContentLoaded', ()=>{
     total.style.display = 'none'
     dealerTotal.style.display = 'none'
     
+    quitButton.addEventListener('click',()=>{
+        location.reload()
+    })
    
 
     startBtn.addEventListener('click', ()=>{
