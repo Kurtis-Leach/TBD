@@ -60,6 +60,7 @@ class Hand {
             cardPullSound()
         }, 250)
         
+        
     }
 
 
