@@ -6,7 +6,7 @@ class Sound {
     this.sound.setAttribute("preload", "auto");
     this.sound.setAttribute("controls", "none");
     this.sound.style.display = "none";
-    this.sound.volume = 0.5
+    
     document.body.append(this.sound);
     }
     play(){
@@ -19,7 +19,9 @@ class Sound {
 
 function backgroundMusic() {
     myMusic = new Sound("./Back.mp3");
+    myMusic.volume = .10
     myMusic.play();
+    
 }
 
 function cardPullSound() {

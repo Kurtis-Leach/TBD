@@ -5,6 +5,7 @@ const newDeck = 'https://deckofcardsapi.com/api/deck/new/shuffle/?deck_count=1'
 
 
 document.addEventListener('DOMContentLoaded', ()=>{
+    
 
 
     let startBtn = document.getElementById('start')
@@ -15,7 +16,7 @@ document.addEventListener('DOMContentLoaded', ()=>{
     let winAlert = document.querySelector('#winner')
     let quitButton = document.querySelector('#quit')
 
-   
+    
 
     
    
@@ -101,3 +102,7 @@ function preGameGif(){
     gifDiv.append(gif)
 }
 
+function backgroundMusic() {
+    myMusic = new Sound("./Back.mp3");
+    myMusic.play();
+}
