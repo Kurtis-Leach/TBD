@@ -52,10 +52,13 @@ class Hand {
     }
 
     cardImgToScreen(card){
-        let cardImg = document.createElement('img')
-        cardImg.src = card.image
-        cardImg.className = 'card-imgs'
-        this.cardDiv.appendChild(cardImg)
+        setTimeout(()=>{
+            let cardImg = document.createElement('img')
+            cardImg.src = card.image
+            cardImg.className = 'card-imgs'
+            this.cardDiv.appendChild(cardImg)
+            cardPullSound()
+        }, 1000)
         
         
     }
@@ -88,30 +91,34 @@ class Hand {
     
     winCheck(){
         if(this.total > 21 && this.dealer.total <= 21){
-            setTimeout(() => { this.winAlert.innerHTML = "<img src='https://media0.giphy.com/media/11HbvtUCfEi8Cs/giphy.gif'>"}, 1000)
+            
+            setTimeout(() => { this.winAlert.innerHTML = "You Lose!"}, 1000)
             //alert(`You Lose!! You had ${this.total}. You Busted`)
         }else if(this.total <= 21 && this.dealer.total > 21){
-            setTimeout(()=> this.winAlert.innerHTML = "You Win! <img src='https://peskypotato.com/media/pepe/pepe-dance2.gif'>", 1000)
+            
+            setTimeout(()=> this.winAlert.innerHTML = "You Win!", 1000)
             //alert(`You Win!! You had ${this.total}. Dealer Busted`)
         }else if(this.total > 21 && this.dealer.total > 21){
-            
-            alert(`Tie!! You and the Dealer Busted`)
+            setTimeout(() => { this.winAlert.innerHTML = "You Tie!"}, 1000)
+            // alert(`Tie!! You and the Dealer Busted`)
         }else if(this.total > this.dealer.total){
-             setTimeout(()=> this.winAlert.innerHTML = "You Win! <img src='https://peskypotato.com/media/pepe/pepe-dance2.gif'>", 1000)
+            
+             setTimeout(()=> this.winAlert.innerHTML = "You Win!", 1000)
             //alert(`You Win!! You had ${this.total}`)
         }else if(this.total < this.dealer.total){
-            setTimeout(() => { this.winAlert.innerHTML = "<img src='https://media0.giphy.com/media/11HbvtUCfEi8Cs/giphy.gif'>"}, 1000)
+            
+            setTimeout(() => { this.winAlert.innerHTML = "You Lose!"}, 1000)
             //alert(`You Lose!! You had ${this.total}`)
         }else if(this.total == this.dealer.total){
-            
-            alert(`Tie!! You had ${this.total}`)
+            setTimeout(() => { this.winAlert.innerHTML = "You Tie!"}, 1000)
+            // alert(`Tie!! You had ${this.total}`)
         }
 
     }
 
     bust(){
         
-        alert(`You Lost!! Your total was ${this.total}`)
+        setTimeout(() => { this.winAlert.innerHTML = "You Lose!"}, 1000)
         
     }
 
@@ -119,7 +126,7 @@ class Hand {
         
         
            
-            //this.winAlert.innerHTML = "You Win! <img src='https://peskypotato.com/media/pepe/pepe-dance2.gif'>"
+            //this.winAlert.innerHTML = "You Win! <img src='http://pixelartmaker.com/art/d1e16859c09183b.png'>"
             
             
        
@@ -128,3 +135,4 @@ class Hand {
 
     }
 }
+

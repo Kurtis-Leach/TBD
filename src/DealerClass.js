@@ -11,21 +11,21 @@ class DealerHand extends Hand{
     }
 
     play(user){
-        if(this.total <= 17){
-            this.hit().then(()=>{
-                if(this.total <= 17){
-        
-                    this.play(user)
-                }else {
-        
-                    user.winCheck()
-
-                }
-            })
-        } else {
-            user.winCheck()
+        setTimeout(()=>{
+            if(this.total <= 17){
+                this.hit().then(()=>{
+                    if(this.total <= 17){
+                        this.play(user)
+                    }else {
             
-        }
+                        user.winCheck()
+                    }
+                })
+            } else {
+                user.winCheck()
+                
+            }
+        },500)
     }
 
 }

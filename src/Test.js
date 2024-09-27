@@ -17,6 +17,8 @@ document.addEventListener('DOMContentLoaded', ()=>{
     let quitButton = document.querySelector('#quit')
 
     
+
+    
    
     
     preGameGif()
@@ -37,8 +39,14 @@ document.addEventListener('DOMContentLoaded', ()=>{
         location.reload()
     })
    
+    // setTimeout(()=>{backgroundMusic()},1000)
 
     startBtn.addEventListener('click', ()=>{
+        backgroundMusic()
+        setInterval(()=>{backgroundMusic()},
+        1000*165
+        //TIME
+        )
         let gifs = document.querySelectorAll('.gifs')
         gifs.forEach( gif => gif.remove())
         winAlert.innerText = ''
@@ -52,10 +60,12 @@ document.addEventListener('DOMContentLoaded', ()=>{
     })
 
     hitBtn.addEventListener('click', ()=>{
+        cardPullSound()
         user.hit()
     })
 
     stayBtn.addEventListener('click', ()=>{
+        console.log('CLIICIICIKCKK')
         user.stay()
         hitBtn.style.display = 'none'
         stayBtn.style.display = 'none'
@@ -90,4 +100,9 @@ function preGameGif(){
     gif.className = 'gifs'
     let gifDiv = document.querySelector('.pregame')
     gifDiv.append(gif)
+}
+
+function backgroundMusic() {
+    myMusic = new Sound("./Back.mp3");
+    myMusic.play();
 }
